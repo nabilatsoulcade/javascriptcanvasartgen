@@ -15,11 +15,27 @@
           drawCircle(canvas,context,color);
           }
       //Generate a random title
-
+      var title = makeTitle();
       //Draw the title
+      drawText(canvas,context,title);
+    }
+    function makeTitle(){
+      var lines = [['The','A','My','Thee'],['Delight','Horror','Escpade','Reflection'],['I','II','III','V']]
+      var title = '';
+      for (var i=0; i<lines.length; i++){
+        var random = Math.floor(Math.random() * lines[i].length);
+        title += lines[i][random] + ' ';
+      }
 
+      return title;
     }
 
+    function drawText (canvas,context,title){
+      context.fillstyle = 'white';
+      context.font = 'bold 1em sans-serif';
+      context.textAlign = 'right';
+      context.fillText(title,canvas.width - 20,canvas.height-40);
+    }
     function degreesToradians(degrees){
       return(degrees * Math.PI)/180;
     }
