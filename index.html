@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title> Abstract Art Generator</title>
+  <script>
+    function artGenerator(){
+      var canvas = document.getElementById('artCanvas');
+      var context = canvas.getContext('2d');
+      //Clear our canvas
+      fillBackgroundColor(canvas,context)
+      //Draw Shapes
+      var colors = ['red','blue','green','yellow','black'];
+      for (var i=0; i<20; i++)
+          {
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          drawCircle(canvas,context,color);
+          }
+      //Generate a random title
+
+      //Draw the title
+
+    }
+
+    function degreesToradians(degrees){
+      return(degrees * Math.PI)/180;
+    }
+    function drawCircle(canvas,context,color){
+      var radius = Math.floor(Math.random() * 40);
+      var x = Math.floor(Math.random() * canvas.width);
+      var y = Math.floor(Math.random() * canvas.height);
+      context.beginPath();
+      context.arc(x,y,radius,0,degreesToradians(360),true);
+      context.fillStyle = color;
+      context.fill();
+    }
+    function fillBackgroundColor(canvas,context){
+      var colors = ['red','blue','green','yellow','black'];
+      var color = colors[Math.floor(Math.random() * colors.length)];
+      context.fillStyle = color;
+      context.fillRect(0,0,canvas.width,canvas.height);
+    }
+    window.onload = function(){
+      var button = document.getElementById('artButton');
+      button.onclick = artGenerator;
+    }
+  </script>
+</head>
+<body>
+  <canvas id="artCanvas" width="600" height="200"></canvas>
+  <input type="button" id="artButton" value="New Art"></input>
+</body>
+</html>
